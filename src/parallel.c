@@ -4,6 +4,7 @@
 
 #define ROWS 1000
 #define COLUMNS 100000
+#define TAG 1
 
 int vet[ROWS][COLUMNS];
 
@@ -16,10 +17,12 @@ int compare(const void* a, const void* b)
 
 int master()
 {
-	/*int ntasks, rank, work;*/
+	int ntasks;
+	/*int rank;*/
+	/*int work;*/
 
-	/*MPI_Status status;*/
-	/*MPI_Comm_size(MPI_COMM_WORLD, &ntasks);*/
+	MPI_Status status;
+	MPI_Comm_size(MPI_COMM_WORLD, &ntasks);
 
 	int i, j, k = COLUMNS;
 	for (i = 0; i < ROWS; i++)
@@ -32,11 +35,31 @@ int master()
 		k = COLUMNS;
 	}
 
+	MPI_Send(vet[0], COLUMNS, MPI_INT, 1, TAG, MPI_COMM_WORLD);
+
+	int* result = NULL;
+
+	MPI_Recv(result, COLUMNS, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+
+	for (i = 0; i < COLUMNS; i++) {
+		printf("%d ", result[i]);
+	}
+	printf("\n");
+
 	return 0;
 }
 
 int slave()
 {
+	int* work = NULL;
+	MPI_Status status;
+
+	MPI_Recv(work, COLUMNS, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+
+	qsort(work, COLUMNS, sizeof(int), compare);
+
+	MPI_Send(&work, COLUMNS, MPI_INT, 0, 0, MPI_COMM_WORLD);
+
 	return 0;
 }
 
