@@ -1,7 +1,7 @@
 #include <stdio.h>
-#include "mpi.h"
+#include <mpi.h>
 
-main(int argc, char** argv)
+int main(int argc, char** argv)
 {
 	int my_rank;       // Identificador deste processo
 	int proc_n;        // Numero de processos disparados pelo usuario na linha de comando (np)  
