@@ -16,9 +16,9 @@ sequential: $(SDIR)/sequential.c
 
 parallel: $(SDIR)/parallel.c
 ifndef LAD
-	$(LAD) $(LADFLAGS) $< -o $@ $(CFLAGS)
-endif
 	$(MPI) -o $@ $< $(CFLAGS)
+endif
+	$(LAD) $(LADFLAGS) $< -o $@ $(CFLAGS)
 
 
 .PHONY: clean
