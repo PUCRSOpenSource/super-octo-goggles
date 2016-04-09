@@ -83,4 +83,6 @@ int main(int argc, char** argv)
 	printf("\nTempo de execucao: %f\n\n", t2-t1);
 
 	MPI_Finalize();
+
+	return 0;
 }
