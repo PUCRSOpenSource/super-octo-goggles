@@ -15,12 +15,12 @@ int compare(const void* a, const void* b)
 
 int master()
 {
-	int ntasks;
+	int proc_n;
 	/*int rank;*/
 	/*int work;*/
 
 	MPI_Status status;
-	MPI_Comm_size(MPI_COMM_WORLD, &ntasks);
+	MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
 	int i, j, k = COLUMNS;
 	for (i = 0; i < ROWS; i++)
