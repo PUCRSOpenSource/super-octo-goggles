@@ -22,7 +22,7 @@ saco esteja vazio. Neste momento são enviadas mensagens de suicídio aos
 escravos. O programa SPMD deve funcionar para qualquer numero de escravos para
 permitir uma análise da curva do Speed-UP e Eficiência.
 
-![Sistema de Arquivos e FAT](https://raw.githubusercontent.com/execb5/super-octo-goggles/master/data/MS.gif)
+![Image](https://github.com/execb5/super-octo-goggles/raw/master/data/MS.gif)
 
 Figura 1: Funcionamento do modelo mestre escravo na ordenação de vários vetores
 (saco de trabalho)
