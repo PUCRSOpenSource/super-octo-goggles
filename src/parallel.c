@@ -56,7 +56,7 @@ int slave()
 
 	qsort(work, COLUMNS, sizeof(int), compare);
 
-	MPI_Send(&work, COLUMNS, MPI_INT, 0, 0, MPI_COMM_WORLD);
+	MPI_Send(work, COLUMNS, MPI_INT, 0, 0, MPI_COMM_WORLD);
 
 	return 0;
 }
