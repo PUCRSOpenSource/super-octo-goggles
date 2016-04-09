@@ -1,5 +1,18 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <mpi.h>
+
+#define ROWS 1000
+#define COLUMNS 100000
+
+int vet[ROWS][COLUMNS];
+
+int compare(const void* a, const void* b)
+{
+	const int* ia = (const int*)a;
+	const int* ib = (const int*)b;
+	return *ia  - *ib;
+}
 
 int main(int argc, char** argv)
 {
