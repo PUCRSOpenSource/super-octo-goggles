@@ -1,4 +1,4 @@
-LAD := $(command -v ladcomp)
+ENVLAD := $(shell command -v ladcomp 2> /dev/null)
 
 SDIR = ./src
 
@@ -15,7 +15,7 @@ sequential: $(SDIR)/sequential.c
 	$(CC) -o $@ $< $(CFLAGS)
 
 parallel: $(SDIR)/parallel.c
-ifndef $(LAD)
+ifndef ENVLAD
 	$(MPI) -o $@ $< $(CFLAGS)
 else
 	$(LAD) $(LADFLAGS) $< -o $@ $(CFLAGS)
