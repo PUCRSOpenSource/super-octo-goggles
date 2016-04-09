@@ -8,9 +8,7 @@ int vet[ROWS][COLUMNS];
 
 int compare(const void* a, const void* b)
 {
-	const int* ia = (const int*)a;
-	const int* ib = (const int*)b;
-	return *ia  - *ib;
+	return *((const int*) a)  - *((const int*) b);
 }
 
 int main(int argc, const char* argv[])
