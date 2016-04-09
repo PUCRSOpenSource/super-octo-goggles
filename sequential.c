@@ -6,6 +6,13 @@
 
 int vet[ROWS][COLUMNS];
 
+int compare(const void* a, const void* b)
+{
+	const int* ia = (const int*)a;
+	const int* ib = (const int*)b;
+	return *ia  - *ib;
+}
+
 int main(int argc, const char* argv[])
 {
 	int i, j, k = COLUMNS;
@@ -18,5 +25,11 @@ int main(int argc, const char* argv[])
 		}
 		k = COLUMNS;
 	}
+
+	for (i = 0; i < ROWS; i++)
+	{
+		qsort(vet[i], COLUMNS, sizeof(int), compare);
+	}
+
 	return 0;
 }
