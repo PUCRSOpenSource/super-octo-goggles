@@ -31,12 +31,14 @@ int master()
 		}
 		k = COLUMNS;
 	}
+	printf("I am the master!\n");
 
 	return 0;
 }
 
 int slave()
 {
+	printf("Please me master!\n");
 	return 0;
 }
 
