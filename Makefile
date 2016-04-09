@@ -15,10 +15,11 @@ sequential: $(SDIR)/sequential.c
 	$(CC) -o $@ $< $(CFLAGS)
 
 parallel: $(SDIR)/parallel.c
-ifndef LAD
+ifndef $(LAD)
 	$(MPI) -o $@ $< $(CFLAGS)
-endif
+else
 	$(LAD) $(LADFLAGS) $< -o $@ $(CFLAGS)
+endif
 
 
 .PHONY: clean
