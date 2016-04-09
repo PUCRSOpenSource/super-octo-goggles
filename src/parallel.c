@@ -16,6 +16,22 @@ int compare(const void* a, const void* b)
 
 int master()
 {
+	/*int ntasks, rank, work;*/
+
+	/*MPI_Status status;*/
+	/*MPI_Comm_size(MPI_COMM_WORLD, &ntasks);*/
+
+	int i, j, k = COLUMNS;
+	for (i = 0; i < ROWS; i++)
+	{
+		for (j = 0; j < COLUMNS; j++)
+		{
+			vet[i][j] = k;
+			k--;
+		}
+		k = COLUMNS;
+	}
+
 	return 0;
 }
 
