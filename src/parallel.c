@@ -100,7 +100,10 @@ int slave()
 		MPI_Recv(work, COLUMNS, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
 		if (status.MPI_TAG == DIETAG)
+		{
+			free(work);
 			return 0;
+		}
 
 		qsort(work, COLUMNS, sizeof(int), compare);
 
