@@ -22,15 +22,15 @@ int master()
 	MPI_Status status;
 	MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
-	int i, j, k = COLUMNS;
+	int i, j, k;
 	for (i = 0; i < ROWS; i++)
 	{
+		k = COLUMNS;
 		for (j = 0; j < COLUMNS; j++)
 		{
 			vet[i][j] = k;
 			k--;
 		}
-		k = COLUMNS;
 	}
 
 	MPI_Send(vet[0], COLUMNS, MPI_INT, 1, TAG, MPI_COMM_WORLD);
@@ -39,7 +39,7 @@ int master()
 
 	MPI_Recv(result, COLUMNS, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 
-	for (i = 0; i < COLUMNS; i++) {
+	for (i = 0; i < 10; i++) {
 		printf("%d ", result[i]);
 	}
 	printf("\n");
@@ -68,8 +68,8 @@ int main(int argc, char** argv)
 
 	MPI_Init(&argc , &argv);
 
-	double t1,t2;
-	t1 = MPI_Wtime();
+	/*double t1,t2;*/
+	/*t1 = MPI_Wtime();*/
 
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
@@ -79,8 +79,8 @@ int main(int argc, char** argv)
 	else
 		slave();
 
-	t2 = MPI_Wtime();
-	printf("\nTempo de execucao: %f\n\n", t2-t1);
+	/*t2 = MPI_Wtime();*/
+	/*printf("\nTempo de execucao: %f\n\n", t2-t1);*/
 
 	MPI_Finalize();
 
