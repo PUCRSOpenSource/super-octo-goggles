@@ -1,10 +1,13 @@
 ENVLAD := $(shell command -v ladcomp 2> /dev/null)
+RUNLAD := $(shell command -v ladrun 2> /dev/null)
 
 SDIR = ./src
 
 CC = gcc
 MPI = mpicc
-LAD = ladcomp
+MPIR = mpirun
+LADC = ladcomp
+LADR = ladrun
 
 LADFLAGS = -env mpicc
 CFLAGS = -Wall -g
@@ -18,9 +21,18 @@ parallel: $(SDIR)/parallel.c
 ifndef ENVLAD
 	$(MPI) -o $@ $< $(CFLAGS)
 else
-	$(LAD) $(LADFLAGS) $< -o $@ $(CFLAGS)
+	$(LADC) $(LADFLAGS) $< -o $@ $(CFLAGS)
 endif
 
+run: parallel
+ifndef RUNLAD
+	$(MPIR) $<
+else
+	$(LADR) $<
+endif
+
+run_seq: sequential
+	./$<
 
 .PHONY: clean
 
