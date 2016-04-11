@@ -5,7 +5,7 @@ SDIR = ./src
 
 CC = gcc
 MPI = mpicc
-MPIR = mpirun
+MPIR = mpirun -np 4
 LADC = ladcomp
 LADR = ladrun
 
