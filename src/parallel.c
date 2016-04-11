@@ -78,14 +78,14 @@ int master()
 	}
 
 	//Test checking first 10 elements of the first 10 arrays
-	for (i = 0; i < 10; i++)
-	{
-		for (j = 0; j < 10; j++)
-		{
-			printf("%d ", vet[i][j]);
-		}
-		printf("\n");
-	}
+	/*for (i = 0; i < 10; i++)*/
+	/*{*/
+		/*for (j = 0; j < 10; j++)*/
+		/*{*/
+			/*printf("%d ", vet[i][j]);*/
+		/*}*/
+		/*printf("\n");*/
+	/*}*/
 
 	return 0;
 }
