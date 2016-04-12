@@ -24,6 +24,9 @@ int save_sorted(int save_path, int* sorted_array)
 
 int master()
 {
+	double t1,t2;
+	t1 = MPI_Wtime();
+
 	int proc_n;
 	int rank;
 	int work = 0;
@@ -87,6 +90,9 @@ int master()
 		/*printf("\n");*/
 	/*}*/
 
+	t2 = MPI_Wtime();
+	fprintf(stderr, "\nTempo de execucao: %f\n\n", t2-t1);
+
 	return 0;
 }
 
@@ -120,8 +126,8 @@ int main(int argc, char** argv)
 
 	MPI_Init(&argc , &argv);
 
-	double t1,t2;
-	t1 = MPI_Wtime();
+	/*double t1,t2;*/
+	/*t1 = MPI_Wtime();*/
 
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
@@ -131,8 +137,8 @@ int main(int argc, char** argv)
 	else
 		slave();
 
-	t2 = MPI_Wtime();
-	fprintf(stderr, "\nTempo de execucao: %f\n\n", t2-t1);
+	/*t2 = MPI_Wtime();*/
+	/*fprintf(stderr, "\nTempo de execucao: %f\n\n", t2-t1);*/
 
 	MPI_Finalize();
 
