@@ -7,47 +7,39 @@
 
 int vet[ROWS][COLUMNS];
 
-int compare(const void* a, const void* b)
+int
+compare(const void* a, const void* b)
 {
-	return *((const int*) a)  - *((const int*) b);
+  return *((const int*) a) - *((const int*) b);
 }
 
-int main(int argc, const char* argv[])
+int
+main(int argc, const char* argv[])
 {
-	time_t start, stop;
+  time_t start, stop;
 
-	start = clock();
+  start = clock();
 
-	int i, j, k = COLUMNS;
-	for (i = 0; i < ROWS; i++)
-	{
-		for (j = 0; j < COLUMNS; j++)
-		{
-			vet[i][j] = k;
-			k--;
-		}
-		k = COLUMNS;
-	}
+  int i, j, k = COLUMNS;
+  for (i = 0; i < ROWS; i++)
+    {
+      for (j = 0; j < COLUMNS; j++)
+        {
+          vet[i][j] = k;
+          k--;
+        }
+      k = COLUMNS;
+    }
 
-	for (i = 0; i < ROWS; i++)
-	{
-		qsort(vet[i], COLUMNS, sizeof(int), compare);
-	}
+  for (i = 0; i < ROWS; i++)
+    {
+      qsort(vet[i], COLUMNS, sizeof(int), compare);
+    }
 
-	//Test checking first 10 elements of the first 10 arrays
-	/*for (i = 0; i < 10; i++)*/
-	/*{*/
-		/*for (j = 0; j < 10; j++)*/
-		/*{*/
-			/*printf("%d ", vet[i][j]);*/
-		/*}*/
-		/*printf("\n");*/
-	/*}*/
+  stop = clock();
 
-	stop = clock();
+  float diff = ((float)(stop - start) / 1000000.F) * 1000;
+  printf("Time: %.0fms\n\n", diff);
 
-	float diff = ((float)(stop - start) / 1000000.F) * 1000;
-	printf("Time: %.0fms\n\n", diff);
-
-	return 0;
+  return 0;
 }
