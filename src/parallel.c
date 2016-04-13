@@ -82,7 +82,7 @@ int master()
 	}
 
 	t2 = MPI_Wtime();
-	fprintf(stderr, "\nTempo de execucao: %f\n\n", t2-t1);
+	fprintf(stderr, "Time: %fs\n\n", t2-t1);
 
 	return 0;
 }

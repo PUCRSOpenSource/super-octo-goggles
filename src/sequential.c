@@ -47,7 +47,7 @@ int main(int argc, const char* argv[])
 	stop = clock();
 
 	float diff = ((float)(stop - start) / 1000000.F) * 1000;
-	printf("Time: %.0fms\n", diff);
+	printf("Time: %.0fms\n\n", diff);
 
 	return 0;
 }
