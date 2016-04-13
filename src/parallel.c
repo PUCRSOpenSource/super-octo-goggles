@@ -34,6 +34,7 @@ int master()
 	MPI_Status status;
 	MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
+	//Populate the matrix
 	int i, j, k;
 	for (i = 0; i < ROWS; i++)
 	{
@@ -80,16 +81,6 @@ int master()
 		MPI_Send(0, 0, MPI_INT, rank, DIETAG, MPI_COMM_WORLD);
 	}
 
-	//Test checking first 10 elements of the first 10 arrays
-	/*for (i = 0; i < 10; i++)*/
-	/*{*/
-		/*for (j = 0; j < 10; j++)*/
-		/*{*/
-			/*printf("%d ", vet[i][j]);*/
-		/*}*/
-		/*printf("\n");*/
-	/*}*/
-
 	t2 = MPI_Wtime();
 	fprintf(stderr, "\nTempo de execucao: %f\n\n", t2-t1);
 
@@ -101,6 +92,7 @@ int slave()
 	int* work = malloc(COLUMNS * sizeof(int));
 	MPI_Status status;
 
+	//Receive and work until it dies
 	while (1)
 	{
 		MPI_Recv(work, COLUMNS, MPI_INT, 0, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
@@ -126,9 +118,6 @@ int main(int argc, char** argv)
 
 	MPI_Init(&argc , &argv);
 
-	/*double t1,t2;*/
-	/*t1 = MPI_Wtime();*/
-
 	MPI_Comm_rank(MPI_COMM_WORLD, &my_rank);
 	MPI_Comm_size(MPI_COMM_WORLD, &proc_n);
 
@@ -136,9 +125,6 @@ int main(int argc, char** argv)
 		master();
 	else
 		slave();
-
-	/*t2 = MPI_Wtime();*/
-	/*fprintf(stderr, "\nTempo de execucao: %f\n\n", t2-t1);*/
 
 	MPI_Finalize();
 
