@@ -14,14 +14,6 @@ int compare(const void* a, const void* b)
 	return *((const int*) a)  - *((const int*) b);
 }
 
-int save_sorted(int save_path, int* sorted_array)
-{
-	int i;
-	for (i = 0; i < COLUMNS; i++)
-		vet[save_path][i] = sorted_array[i];
-	return 0;
-}
-
 int master()
 {
 	double t1,t2;
@@ -55,12 +47,10 @@ int master()
 
 	//Receive a result from any slave and dispatch a new work request
 	int save_path = 0;
-	int* result = malloc(COLUMNS * sizeof(int));
 	while (work < ROWS)
 	{
-		MPI_Recv(result, COLUMNS, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
+		MPI_Recv(vet[save_path], COLUMNS, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 		MPI_Send(vet[work], COLUMNS, MPI_INT, status.MPI_SOURCE, WORKTAG, MPI_COMM_WORLD);
-		save_sorted(save_path, result);
 		work++;
 		save_path++;
 	}
@@ -68,12 +58,9 @@ int master()
 	//Receive last results
 	for (rank = 1; rank < proc_n; rank++)
 	{
-		MPI_Recv(result, COLUMNS, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
-		save_sorted(save_path, result);
+		MPI_Recv(vet[save_path], COLUMNS, MPI_INT, MPI_ANY_SOURCE, MPI_ANY_TAG, MPI_COMM_WORLD, &status);
 		save_path++;
 	}
-
-	free(result);
 
 	//Kill all the slaves
 	for (rank = 1; rank < proc_n; rank++)
