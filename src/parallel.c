@@ -16,7 +16,7 @@ compare(const void* a, const void* b)
 }
 
 int
-master()
+master(void)
 {
   double t1,t2;
   t1 = MPI_Wtime();
@@ -77,7 +77,7 @@ master()
 }
 
 int
-slave()
+slave(void)
 {
   int* work = malloc(COLUMNS * sizeof(int));
   MPI_Status status;
