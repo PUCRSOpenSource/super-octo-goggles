@@ -30,7 +30,8 @@ Figura 1: Funcionamento do modelo mestre escravo na ordenação de vários vetor
 Os itens para avaliação são:
 
 * execução da versão sequencial;
-* implementação da versão paralela SPMD do algoritmo em C e MPI seguindo o modelo mestre/escravo;
+* implementação da versão paralela SPMD do algoritmo em C e MPI seguindo o
+	modelo mestre/escravo;
 * medição dos tempos de execução para a versão sequencial em uma máquina
 	qualquer do aluno ou laboratório e da versão paralela (usando 2 nós exclusivos
 	da máquina gates totalizando 16 e 32 processos - cada nó possui 8
