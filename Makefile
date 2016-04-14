@@ -5,7 +5,7 @@ SDIR = ./src
 
 CC = gcc
 MPI = mpicc
-MPIR = mpirun -np 16
+MPIR = mpirun
 LADC = ladcomp
 LADR = ladrun
 
@@ -26,9 +26,17 @@ endif
 
 run: parallel
 ifndef RUNLAD
+ifndef NP
 	$(MPIR) $<
 else
+	$(MPIR) -np ${NP} $<
+endif
+else
+ifndef NP
 	$(LADR) $<
+else
+	$(LADR) -np ${NP} $<
+endif
 endif
 
 run_seq: sequential
