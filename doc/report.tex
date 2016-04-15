@@ -1,11 +1,11 @@
-\documentclass[a4]{article}
+\documentclass[9pt]{IEEEtran}
 \usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 
 \sloppy
 
-\title{Métodos Computacionais\\ Seminário I}
+\title{Programação Paralela\\ Trabalho I}
 
 \author{Giovanni Cupertino, Matthias Nunes}
 
@@ -14,48 +14,5 @@
 \maketitle
 
 \section{Introdução}
-
-	\textbf{CAS}, ou \textbf{C}omputer \textbf{A}lgebra \textbf{S}ystem, é um
-	tipo de software usado na manipulação de fórmulas matemáticas. O objetivo
-	principal de um \textbf{CAS} é automatizar manipulações algébricas chatas e
-	muitas vezes difíceis. A principal diferença entre \textbf{CAS} e uma
-	calculadora tradicional é a habilidade de lidar com equações de forma
-	simbólica, e não numérica. Os usos específicos e capacidades desses sistemas
-	varia muito de um para o outro, mas seu propósito continua o mesmo:
-	manipulação de equações simbólicas.
-
-\section{Implementação de um CAS}
-
-	\subsection{Estruturas de Dados}
-
-		Para um programa começar a manipular uma equação simbólica, primeiro é
-		preciso guardar essa equação na memória. No centro de qualquer sistema
-		algébrico computacional existe uma estrutura de dados (ou combinação de
-		estruturas de dados) responsável por descrever uma equação matemática.
-		Equações podem existir em diversas variáveis, conter referências para
-		outras funções, e podem elas mesmas serem funções racionais. Não existe
-		solução perfeita para uma equação representada em uma estrutura de
-		dados. Uma representação pode ser eficiente para certas operações
-		matemáticas, mas ruim para outras. Outra representação pode ser
-		ineficiente em complexidade de tempo e espaço, mas fácil de programar.
-		Essas negociações precisam ser consideradas quando escolher uma
-		representação, não existe resposta absoluta ao problema.
-
-	\subsection{Simplificação}
-
-		Uma tarefa comum que qualquer sistema algébrico computacional precisa
-		fazer é simplificar uma expressão. Simplicar uma expressão torna outras
-		tarefas mais fáceis, especialmente comparar expressões que entraram em
-		formas diferentes e verificar se são equivalentes. O sistema tem que
-		saber como somar termos que devem ser somados e como somar expoentes
-		quando seus multiplicandos tiverem a mesma base. Sistemas algébricos
-		computacionais sempre devem ordenar todos os termos para chegar na forma
-		canônica. Deve ter uma ordem consistente onde tudo é ordenado. Se
-		expoentes podem ser polinomiais, como $x^{x^3 +3+x}$, esses expoentes
-		devem ser ordenados. Isso pode seguir indefinidamente, com cada potência
-		sendo mais uma polinomial complexa. Ordenação vai ter que acontecer em
-		diferentes níveis para que seja consistente. Os expoentes mais
-		predominantes devem ser ordenados primeiros para que os abaixo fiquem em
-		seus respectivos lugares.
 
 \end{document}
