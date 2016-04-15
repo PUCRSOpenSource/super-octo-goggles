@@ -10,13 +10,13 @@
 int vet[ROWS][COLUMNS];
 
 int
-compare(const void* a, const void* b)
+compare (const void* a, const void* b)
 {
   return *((const int*) a) - *((const int*) b);
 }
 
 int
-master(void)
+master (void)
 {
   double t1,t2;
   t1 = MPI_Wtime();
@@ -77,7 +77,7 @@ master(void)
 }
 
 int
-slave(void)
+slave (void)
 {
   int* work = malloc(COLUMNS * sizeof(int));
   MPI_Status status;
@@ -102,7 +102,7 @@ slave(void)
 }
 
 int
-main(int argc, char** argv)
+main (int argc, char** argv)
 {
   int my_rank;
   int proc_n;

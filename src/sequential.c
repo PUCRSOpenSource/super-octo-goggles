@@ -8,13 +8,13 @@
 int vet[ROWS][COLUMNS];
 
 int
-compare(const void* a, const void* b)
+compare (const void* a, const void* b)
 {
   return *((const int*) a) - *((const int*) b);
 }
 
 int
-main(int argc, const char* argv[])
+main (int argc, const char* argv[])
 {
   time_t start, stop;
 
