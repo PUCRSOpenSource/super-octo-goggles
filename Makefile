@@ -48,10 +48,10 @@ run_seq: sequential
 .PHONY: clean
 
 clean:
-	rm -rf sequential
-	rm -rf parallel
-	rm report.aux
-	rm report.fdb_latexmk
-	rm report.fls
-	rm report.log
-	rm report.pdf
+	rm -f sequential
+	rm -f parallel
+	rm -f report.aux
+	rm -f report.fdb_latexmk
+	rm -f report.fls
+	rm -f report.log
+	rm -f report.pdf
