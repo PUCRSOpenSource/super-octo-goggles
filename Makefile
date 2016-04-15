@@ -39,6 +39,9 @@ else
 endif
 endif
 
+tex: doc/report.tex
+	latexmk -pvc -f doc/report.tex
+
 run_seq: sequential
 	./$<
 
@@ -47,4 +50,8 @@ run_seq: sequential
 clean:
 	rm -rf sequential
 	rm -rf parallel
-
+	rm report.aux
+	rm report.fdb_latexmk
+	rm report.fls
+	rm report.log
+	rm report.pdf
