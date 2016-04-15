@@ -1,0 +1,96 @@
+./sequential
+Time: 6590ms
+
+ladrun -np 2 parallel
+Time: 10.316653s
+
+ladrun -np 3 parallel
+Time: 4.394489s
+
+ladrun -np 4 parallel
+Time: 3.775602s
+
+ladrun -np 5 parallel
+Time: 2.515835s
+
+ladrun -np 6 parallel
+Time: 2.525506s
+
+ladrun -np 7 parallel
+Time: 2.321939s
+
+ladrun -np 8 parallel
+Time: 2.633243s
+
+ladrun -np 9 parallel
+Time: 2.281066s
+
+ladrun -np 10 parallel
+Time: 2.341446s
+
+ladrun -np 11 parallel
+Time: 2.267919s
+
+ladrun -np 12 parallel
+Time: 2.316759s
+
+ladrun -np 13 parallel
+Time: 2.324755s
+
+ladrun -np 14 parallel
+Time: 2.362186s
+
+ladrun -np 15 parallel
+Time: 2.569212s
+
+ladrun -np 16 parallel
+Time: 2.380381s
+
+ladrun -np 17 parallel
+Time: 2.570236s
+
+ladrun -np 18 parallel
+Time: 2.335644s
+
+ladrun -np 19 parallel
+Time: 2.330674s
+
+ladrun -np 20 parallel
+Time: 2.700986s
+
+ladrun -np 21 parallel
+Time: 2.756410s
+
+ladrun -np 22 parallel
+Time: 2.425581s
+
+ladrun -np 23 parallel
+Time: 2.673958s
+
+ladrun -np 24 parallel
+Time: 2.581611s
+
+ladrun -np 25 parallel
+Time: 2.527813s
+
+ladrun -np 26 parallel
+Time: 2.630603s
+
+ladrun -np 27 parallel
+Time: 2.604702s
+
+ladrun -np 28 parallel
+Time: 2.539862s
+
+ladrun -np 29 parallel
+Time: 4.476661s
+
+ladrun -np 30 parallel
+Time: 2.486894s
+
+ladrun -np 31 parallel
+Time: 2.690007s
+
+ladrun -np 32 parallel
+Time: 2.697802s
+
