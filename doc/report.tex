@@ -15,12 +15,35 @@
 
 \section{Introdução}
 
-O objetivo do trabalho é desenvolver uma solução que ordene diversos vetores utilizando o algoritmo Quick Sort.  Os vetores contém cem mil elementos e são, no total, mil vetores que estão na ordem inversa de valores indo de cem mil na primeira posição até um na ultima posição. 
-Para a abordagem paralela do trabalho, utilizou-se a estrutura mestre escravo e a biblioteca MPI. Para esta abordagem temos um dos processos como mestre, que é responsável por mandar mensagens com o vetor a ser ordenado, avisar aos escravos para que terminem suas funções(suicídio) e para reorganizar o vetor na sua posição original na estrutura. Os outros processos (escravos) recebem o vetor o ordenam e devolvem ao mestre e, enquanto estão ativos, ficam pedindo um vetor para ordenar.
+O objetivo do trabalho é desenvolver uma solução que ordene diversos vetores
+utilizando o algoritmo Quick Sort.  Os vetores contém cem mil elementos e são,
+no total, mil vetores que estão na ordem inversa de valores indo de noventa e
+nove mil novecentos e noventa e nove na primeira posição até zero na ultima
+posição.  Para a abordagem paralela do trabalho, utilizou-se a estrutura mestre
+escravo utilizando biblioteca \textbf{MPI}. Para esta abordagem temos um dos
+processos como mestre, que é responsável por mandar mensagens com o vetor a ser
+ordenado, avisar aos escravos para que terminem suas funções (suicídio) e para
+reorganizar o vetor na sua posição original na estrutura. Os outros processos
+(escravos) recebem o vetor, o ordenam e devolvem ao mestre e, enquanto estão
+ativos, ficam pedindo um vetor para ordenar.
 
-FOTOS vou te mandar depois
+%FOTOS vou te mandar depois
 
-Em primeira análise é possível observar que o tempo de resposta para dois processos é maior que quando executado sequencialmente, isso ocorre pelo fato de que só temos 1 processo realizando a ordenação e o outro como mestre, havendo um tempo extra de troca de mensagens entre os dois. Essas pequenas diferenças, como a troca de mensagens, a reorganização dos vetores nas suas posições inicias e a comunicação entre os 2 nós utilizados também reduzem a eficiência e criam diferenças entre o speed-up ideal e o real.
-Devido a velocidade do algoritmo de ordenação o tempo para realizar a tarefa depois de cinco processos permaneceu bastante semelhante, já que os escravos terminam a sua tarefa antes mesmo do mestre conseguir enviar uma nova para todos os processos que estão solicitando. Algumas alternativas para maior utilização dos núcleos, para os casos com mais de cinco, seriam possuir mais de um mestre permitindo maior distribuição de vetores aos escravos(cada um controlando escravos diferentes e passando os vetores quando lhes forem requeridos) e a utilização de um algoritmo de ordenação mais lento que proporcionaria mais tempo ao mestre para distribuir vetores aos escravos, ou seja, antes que tivesse novas requisições.
+Em primeira análise é possível observar que o tempo de resposta para dois
+processos é maior que quando executado sequencialmente, isso ocorre pelo fato de
+que só temos 1 processo realizando a ordenação e o outro como mestre, havendo um
+tempo extra de troca de mensagens entre os dois. Essas pequenas diferenças, como
+a troca de mensagens, a reorganização dos vetores nas suas posições inicias e a
+comunicação entre os 2 nós utilizados também reduzem a eficiência e criam
+diferenças entre o speed-up ideal e o real. Devido a velocidade do algoritmo de
+ordenação o tempo para realizar a tarefa depois de cinco processos permaneceu
+bastante semelhante, já que os escravos terminam a sua tarefa antes mesmo do
+mestre conseguir enviar uma nova para todos os processos que estão solicitando.
+Algumas alternativas para maior utilização dos núcleos, para os casos com mais
+de cinco, seriam possuir mais de um mestre permitindo maior distribuição de
+vetores aos escravos(cada um controlando escravos diferentes e passando os
+vetores quando lhes forem requeridos) e a utilização de um algoritmo de
+ordenação mais lento que proporcionaria mais tempo ao mestre para distribuir
+vetores aos escravos, ou seja, antes que tivesse novas requisições.
 
 \end{document}
