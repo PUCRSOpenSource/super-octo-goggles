@@ -54,4 +54,3 @@ clean:
 	rm -f report.fdb_latexmk
 	rm -f report.fls
 	rm -f report.log
-	rm -f report.pdf
