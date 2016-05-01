@@ -1,9 +1,12 @@
-\documentclass[9pt]{IEEEtran}
+\documentclass[11pt]{IEEEtran}
 \usepackage[brazilian]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{float}
 \usepackage{graphicx}
+\usepackage{caption}
+
+\captionsetup[table]{skip=10pt}
 
 \sloppy
 
@@ -22,33 +25,25 @@
 	são, no total, mil vetores que estão na ordem inversa de valores indo de
 	noventa e nove mil novecentos e noventa e nove na primeira posição até zero
 	na ultima posição.  Para a abordagem paralela do trabalho, utilizou-se a
-	estrutura mestre escravo utilizando biblioteca \textbf{MPI}. Para esta
-	abordagem temos um dos processos como mestre, que é responsável por mandar
-	mensagens com o vetor a ser ordenado, avisar aos escravos para que terminem
-	suas funções (suicídio) e para reorganizar o vetor na sua posição original
-	na estrutura. Os outros processos (escravos) recebem o vetor, o ordenam e
+	estrutura mestre escravo utilizando biblioteca MPI\@. Para esta abordagem
+	temos um dos processos como mestre, que é responsável por mandar mensagens
+	com o vetor a ser ordenado, avisar aos escravos para que terminem suas
+	funções (suicídio) e para reorganizar o vetor na sua posição original na
+	estrutura. Os outros processos (escravos) recebem o vetor, o ordenam e
 	devolvem ao mestre e, enquanto estão ativos, ficam pedindo um vetor para
 	ordenar.
 
-\section{Resultados}
+\section{Análise dos Resultados Obtidos}
 
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=88mm]{doc/graph.png}
-		\caption{blabla}
-		\label{fig_graph}
-	\end{figure}
-
-	\begin{figure}[H]
-		\centering
-		\includegraphics[width=88mm]{doc/table.png}
-		\caption{blabla}
-		\label{fig_table}
-	\end{figure}
+	Em primeira análise é possível observar que o tempo de resposta para dois
+	processos é maior que quando executado sequencialmente, isso ocorre pelo
+	fato de que só temos um processo realizando a ordenação e o outro como
+	mestre, havendo um tempo extra principalmente pela troca de mensagens entre
+	os dois, como pode ser visto na tabela~\ref{result_table}.
 
 	\begin{table}[H]
 		\centering
-		\scalebox{0.9}{
+		\scalebox{0.8}{
 			\begin{tabular}{c|r|r|r|r}
 				Núcleos & Tempo de Execução(s) & Speed-Up & Speed-Up Ideal & Eficiência \\
 				\hline
@@ -77,26 +72,42 @@
 				32 & 2,69780 & 2,44273 & 32 & 0,07634 \\
 			\end{tabular}
 		}
-		\label{table}
-		\caption{blabla}
+		\caption{Resultados obtidos}
+		\label{result_table}
 	\end{table}
 
-	Em primeira análise é possível observar que o tempo de resposta para dois
-	processos é maior que quando executado sequencialmente, isso ocorre pelo
-	fato de que só temos 1 processo realizando a ordenação e o outro como
-	mestre, havendo um tempo extra de troca de mensagens entre os dois. Essas
-	pequenas diferenças, como a troca de mensagens, a reorganização dos vetores
-	nas suas posições inicias e a comunicação entre os 2 nós utilizados também
-	reduzem a eficiência e criam diferenças entre o speed-up ideal e o real.
-	Devido a velocidade do algoritmo de ordenação o tempo para realizar a tarefa
-	depois de cinco processos permaneceu bastante semelhante, já que os escravos
-	terminam a sua tarefa antes mesmo do mestre conseguir enviar uma nova para
-	todos os processos que estão solicitando.  Algumas alternativas para maior
-	utilização dos núcleos, para os casos com mais de cinco, seriam possuir mais
-	de um mestre permitindo maior distribuição de vetores aos escravos(cada um
-	controlando escravos diferentes e passando os vetores quando lhes forem
-	requeridos) e a utilização de um algoritmo de ordenação mais lento que
-	proporcionaria mais tempo ao mestre para distribuir vetores aos escravos, ou
-	seja, antes que tivesse novas requisições.
+	\begin{figure}[H]
+		\centering
+		\includegraphics[width=88mm]{doc/graph.png}
+		\caption{Gráfico gerado a partir da tabela}
+		\label{fig_graph}
+	\end{figure}
+
+	Essas pequenas diferenças, como a troca de mensagens, a reorganização dos
+	vetores nas suas posições inicias e a comunicação entre os 2 nós utilizados
+	também reduzem a eficiência e criam diferenças entre o speed-up ideal e o
+	real. Devido a velocidade do algoritmo de ordenação o tempo para realizar a
+	tarefa depois de cinco processos permaneceu bastante semelhante, já que os
+	escravos terminam a sua tarefa antes mesmo do mestre conseguir enviar uma
+	nova para todos os processos que estão solicitando.  Algumas alternativas
+	para maior utilização dos núcleos, para os casos com mais de cinco, seriam
+	possuir mais de um mestre permitindo maior distribuição de vetores aos
+	escravos(cada um controlando escravos diferentes e passando os vetores
+	quando lhes forem requeridos) e a utilização de um algoritmo de ordenação
+	mais lento que proporcionaria mais tempo ao mestre para distribuir vetores
+	aos escravos, ou seja, antes que tivesse novas requisições.
+
+	O fato de se estar utilizando dois nós e a biblioteca MPI permite um
+	balanceamento da carga igualitário dos processos nos núcleos físicos ($8$ em
+	cada uma das máquinas com capacidade de simular $16$ threads). Mesmo
+	utilizando capacidades acima de dezesseis processos
+	(\emph{hyper-threading}), não foi possível observar melhoras significativas
+	nos tempos de execução e por consequência no speed-up e na eficiência.
+
+\section{Dificuldades Encontradas}
+
+	Não foram encontradas dificuldades na implementação desse trabalho, nem na
+	utilização da biblioteca MPI\@.
 
 \end{document}
+
