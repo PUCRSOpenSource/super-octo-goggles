@@ -1,5 +1,11 @@
 # super-octo-goggles
 
+
+* [Giovanni Cupertino](http://www.github.com/GiovanniCuper)
+* [Matthias Nunes](http://www.github.com/execb5)
+
+---
+
 O objetivo do trabalho é implementar, usando a biblioteca MPI, uma versão
 paralela seguindo o modelo mestre escravo, de um programa que ordena vários
 vetores usando o algortimo Quick Sort (usar a versão padrão do C qsort()). Após
